@@ -8,7 +8,14 @@ Please have your own laptop with npm / yarn, node, RethinkDB pre-installed.
 4. Merging Sequelize with GraphQL.
 5. Writing Mutations.
 
-
+TODO:
+- Parameterezett lekerdezes
+- Beinjectalas
+- 2 x 2 model class keszitese egyik natur js masik kapcsolodik a rethinkdb-hez
+- Rethink szeparalasa
+- 5 db feladat es 10db branch letrehozasa
+- Feladat leirasa
+- Tesztek irasa minden feladathoz
 
 # How did I get the speakers
 
