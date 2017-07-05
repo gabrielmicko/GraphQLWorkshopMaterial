@@ -1,5 +1,5 @@
-import speakers from '../db/joined/speakers.json';
-import talks from '../db/joined/talks.json';
+import speakers from '../db/speakers.json';
+import talks from '../db/talks.json';
 
 const getTalks = () => {
   return new Promise(resolve => {

@@ -4,7 +4,7 @@
   "description": "This is a workshop material for learning GraphQL, RethinkDB, Node",
   "main": "index.js",
   "scripts": {
-    "seed": "./node_modules/.bin/babel-node ./src/seed.js",
+    "seed": "./node_modules/.bin/babel-node ./src/rethink/seed.js",
     "graphql": "./node_modules/.bin/babel-node ./src/server.js"
   },
   "repository": {},

@@ -2,21 +2,22 @@ import {
   connectToDB,
   createDatabase,
   createTable,
-  seedSpeakers,
-  seedTalks,
+  insertData,
   wipeTables,
-} from './helper/rethink.js';
+} from '../model/rethink';
+
+import speakers from '../db/speakers.json';
+import talks from '../db/talks.json';
 
 console.log('Connecting to the server.');
 connectToDB()
   .then(conn => {
     createDatabase(conn, 'jsdays')
-      .then(conn.use('jsdays'))
-      .then(createTable(conn, 'speakers'))
-      .then(createTable(conn, 'talks'))
-      .then(wipeTables(conn, ['talks', 'speakers']))
-      .then(seedSpeakers(conn, 'speakers'))
-      .then(seedTalks(conn, 'talks', 'speakers'))
+      .then(createTable(conn, 'jsdays', 'speakers'))
+      .then(createTable(conn, 'jsdays', 'talks'))
+      .then(wipeTables(conn, 'jsdays', ['talks', 'speakers']))
+      .then(insertData(conn, 'jsdays', 'speakers', speakers))
+      .then(insertData(conn, 'jsdays', 'talks', talks))
       .then(() => {
         console.log('Seeding done!');
       })
