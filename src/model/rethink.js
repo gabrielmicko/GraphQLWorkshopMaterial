@@ -4,7 +4,7 @@ const connectToDB = () => {
   return r.connect({
     host: 'localhost',
     port: 28015,
-    user: 'admin',
+    user: 'admin'
   });
 };
 
@@ -18,13 +18,9 @@ const createDatabase = (conn, dbName) => {
 
 const createTable = (conn, dbName, tableName) => {
   return new Promise(resolve => {
-    try {
-      r.db(dbName).tableCreate(tableName).run(conn, err => {
-        err ? resolve(err) : resolve();
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    r.db(dbName).tableCreate(tableName).run(conn, err => {
+      err ? resolve(err) : resolve();
+    });
   });
 };
 
@@ -55,12 +51,22 @@ const wipeTables = (conn, dbName, tables) => {
   return Promise.all(deletePromises);
 };
 
-const getTalkBySpeakerId = () => {
-  
+const getByFilters = (conn, dbName, tableName, filters) => {
+  return new Promise((resolve, reject) => {
+    r.db(dbName).table(tableName).filter(filters).run(conn, (err, result) => {
+      !err ? resolve(result.toArray()) : reject(err);
+    });
+  });
 };
 
-const getSpeakerByName = () => {
-  
+const getAll = (conn, dbName, tableName) => {
+  return new Promise((resolve, reject) => {
+    r.db(dbName).table(tableName).getAll().run(conn, (err, result) => {
+      !err ? resolve(result.toArray()) : reject(err);
+    });
+  });
 };
+
+const getByName = (conn, dbName, tableName, id) => {};
 
 export { connectToDB, createDatabase, createTable, insertData, wipeTables };
