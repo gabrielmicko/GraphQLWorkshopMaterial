@@ -6,6 +6,9 @@ export default {
       return getTalksById(id);
     },
   },
+  Mutation: {
+  	//addSpeaker
+  },
   Query: {
     talks: (_, args) => getTalks(args),
     speakers: (_, args) => getSpeakers(args),
