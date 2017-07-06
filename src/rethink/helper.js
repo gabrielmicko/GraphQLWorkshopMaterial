@@ -4,7 +4,7 @@ const connectToDB = () => {
   return r.connect({
     host: 'localhost',
     port: 28015,
-    user: 'admin'
+    user: 'admin',
   });
 };
 
@@ -61,7 +61,7 @@ const getByFilters = (conn, dbName, tableName, filters) => {
 
 const getAll = (conn, dbName, tableName) => {
   return new Promise((resolve, reject) => {
-    r.db(dbName).table(tableName).getAll().run(conn, (err, result) => {
+    r.db(dbName).table(tableName).run(conn, (err, result) => {
       !err ? resolve(result.toArray()) : reject(err);
     });
   });
@@ -69,4 +69,4 @@ const getAll = (conn, dbName, tableName) => {
 
 const getByName = (conn, dbName, tableName, id) => {};
 
-export { connectToDB, createDatabase, createTable, insertData, wipeTables };
+export { connectToDB, createDatabase, createTable, insertData, wipeTables, getAll, getByFilters };

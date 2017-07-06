@@ -13,11 +13,4 @@ const Speaker = /* GraphQL */ `
   }
 `;
 
-
-/*const Speaker = /!* GraphQL *!/ `
-  type Speaker {
-    name: String!
-  }
-`;*/
-
 export default Speaker;
