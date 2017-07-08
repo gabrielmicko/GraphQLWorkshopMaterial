@@ -1,4 +1,9 @@
-import { getAll, getByFilters, connectToDB } from '../rethink/helper';
+import {
+  getAll,
+  getByFilters,
+  connectToDB,
+  insertData
+} from '../rethink/helper';
 
 let connection = false;
 connectToDB().then(conn => {
@@ -9,9 +14,9 @@ const getTalks = () => {
   return getAll(connection, 'jsdays', 'talks');
 };
 
-const getSpeakers = ({ name }) => {
-  if (name) {
-     return getByFilters(connection, 'jsdays', 'speakers', { name: name });
+const getSpeakers = filter => {
+  if (filter) {
+    return getByFilters(connection, 'jsdays', 'speakers', filter);
   }
   return getAll(connection, 'jsdays', 'speakers');
 };
@@ -20,4 +25,15 @@ const getTalksById = speakerId => {
   return getByFilters(connection, 'jsdays', 'talks', { speaker_id: speakerId });
 };
 
-export { getTalks, getSpeakers, getTalksById, connection };
+const saveSpeaker = speakerData => {
+  return new Promise(resolve => {
+    let insertPromise = insertData(connection, 'jsdays', 'speakers', [
+      speakerData
+    ]);
+    insertPromise.then(result => {
+      resolve(result[0]);
+    });
+  });
+};
+
+export { getTalks, getSpeakers, getTalksById, connection, saveSpeaker };

@@ -3,21 +3,32 @@ import Talk from './talk';
 
 const Query = /* GraphQL */ `
   type Query {
-    speakers(name: String): [Speaker!]
+    speakers(id: String, name: String): [Speaker!]
     talks: [Talk!]
   }
 `;
 
 const Schema = /* GraphQL */ `
   schema {
-    query: Query
+    query: Query,
+    mutation: Mutation
   }
 `;
 
 const Mutation = /* GraphQL */ `
   type Mutation {
-    query: Query
+    addSpeaker(
+      name: String!
+      bio: String!
+      facebook: String
+      github: String
+      linkedin: String
+      twitter: String
+      position: String!
+      name: String!
+      photo: String!
+    ) : Speaker
   }
 `;
 
-export default [Schema, Query, Speaker, Talk];
+export default [Schema, Query, Mutation, Speaker, Talk];

@@ -4,7 +4,7 @@ const connectToDB = () => {
   return r.connect({
     host: 'localhost',
     port: 28015,
-    user: 'admin',
+    user: 'admin'
   });
 };
 
@@ -46,7 +46,13 @@ const insertData = (conn, dbName, tableName, dataArray) => {
 const wipeTables = (conn, dbName, tables) => {
   let deletePromises = [];
   tables.forEach(table => {
-    deletePromises.push(r.db(dbName).table(table).delete().run(conn));
+    let delPromise = new Promise(resolve => {
+      r.db(dbName).table(table).delete().run(conn, (conn, err) => {
+        err ? resolve(err) : resolve();
+      });
+    });
+
+    deletePromises.push(delPromise);
   });
   return Promise.all(deletePromises);
 };
@@ -69,4 +75,12 @@ const getAll = (conn, dbName, tableName) => {
 
 const getByName = (conn, dbName, tableName, id) => {};
 
-export { connectToDB, createDatabase, createTable, insertData, wipeTables, getAll, getByFilters };
+export {
+  connectToDB,
+  createDatabase,
+  createTable,
+  insertData,
+  wipeTables,
+  getAll,
+  getByFilters
+};
