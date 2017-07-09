@@ -13,6 +13,7 @@ const Speaker = /* GraphQL */ `
     position: String!
     name: String!
     photo: String!
+    talks: [Talk]!
   }
 `;
 
