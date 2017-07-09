@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphQL server should return all the speakers with talks. 1`] = `
+Object {
+  "errors": Array [
+    [GraphQLError: Cannot query field "talks" on type "Speaker".],
+  ],
+}
+`;
