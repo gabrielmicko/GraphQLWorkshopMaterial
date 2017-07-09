@@ -6,8 +6,8 @@
   "scripts": {
     "seed": "./node_modules/.bin/babel-node ./src/rethink/seed.js",
     "graphql": "./node_modules/.bin/babel-node ./src/server.js",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "./node_modules/.bin/jest",
+    "test:watch": "./node_modules/.bin/jest --watch"
   },
   "repository": {},
   "author": "Gabriel Micko",
