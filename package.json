@@ -7,7 +7,7 @@
     "seed": "./node_modules/.bin/babel-node ./src/rethink/seed.js",
     "graphql": "./node_modules/.bin/babel-node ./src/server.js",
     "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test:watch": "jest --watch"
   },
   "repository": {},
   "author": "Gabriel Micko",
