@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`GraphQL server should return a speaker by a name. 1`] = `
+Object {
+  "errors": Array [
+    [GraphQLError: Cannot query field "bio" on type "Talk".],
+    [GraphQLError: Cannot query field "facebook" on type "Talk".],
+    [GraphQLError: Cannot query field "github" on type "Talk".],
+    [GraphQLError: Cannot query field "linkedin" on type "Talk".],
+    [GraphQLError: Cannot query field "twitter" on type "Talk". Did you mean "title"?],
+    [GraphQLError: Cannot query field "position" on type "Talk".],
+    [GraphQLError: Cannot query field "photo" on type "Talk".],
+  ],
+}
+`;
+
+exports[`GraphQL server should return a speaker by id. 1`] = `
+Object {
+  "errors": Array [
+    [GraphQLError: Syntax Error GraphQL request (3:15) Expected Name, found )
+
+2:     {
+3:       speaker() {
+                 ^
+4:         id,
+],
+  ],
+}
+`;
+
 exports[`GraphQL server should return all the speakers. 1`] = `
 Object {
   "errors": Array [
