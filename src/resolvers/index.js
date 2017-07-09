@@ -11,6 +11,6 @@ export default {
   },
   Query: {
     talks: (_, args) => getTalks(),
-    speakers: (_, args) => getSpeakers()
+    speakers: (_, args) => getSpeakers(args)
   }
 };
