@@ -21,7 +21,7 @@ const getSpeakers = filter => {
   return getAll(connection, 'jsdays', 'speakers');
 };
 
-const getTalksById = speakerId => {
+const getTalksBySpeakerId = speakerId => {
   return getByFilters(connection, 'jsdays', 'talks', { speaker_id: speakerId });
 };
 
@@ -36,4 +36,4 @@ const saveSpeaker = speakerData => {
   });
 };
 
-export { getTalks, getSpeakers, getTalksById, connection, saveSpeaker };
+export { getTalks, getSpeakers, getTalksBySpeakerId, connection, saveSpeaker };

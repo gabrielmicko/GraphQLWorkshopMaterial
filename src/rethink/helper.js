@@ -7,7 +7,9 @@ const connectToDB = () => {
     user: 'admin'
   });
 };
+/**
 
+*/
 const createDatabase = (conn, dbName) => {
   return new Promise(resolve => {
     r.dbCreate(dbName).run(conn, err => {

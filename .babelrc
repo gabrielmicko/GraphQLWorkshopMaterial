@@ -1,5 +1,10 @@
 {
 	"presets": [
 		"node5"
-	]
+	],
+  "env": {
+    "test": {
+      "presets": ["node5"]
+    }
+  }
 }

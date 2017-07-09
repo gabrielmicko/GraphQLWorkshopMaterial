@@ -26,6 +26,7 @@ async function seedDatabase() {
   await insertData(conn, 'jsdays', 'talks', talks);
   console.log('💾 - Speakers and talks has been uploaded.');
   console.log('🎉 - Work done, enjoy 🍦');
+  process.exit();
 }
 
 seedDatabase();
