@@ -10,6 +10,14 @@ const app = Express();
 /**
  * Express to use GraphHTTP
  */
+app.use(
+  '/' + APP_PATH,
+  GraphHTTP({
+    schema: Schema,
+    pretty: true,
+    graphiql: true
+  })
+);
 
 app.listen(APP_PORT, () => {
   console.log(`👂 - GraphQL server is listening on port ${APP_PORT}`);
