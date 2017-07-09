@@ -1,3 +1,7 @@
+/**
+ * Speaker type defining the parameters
+ */
+
 const Speaker = /* GraphQL */ `
   type Speaker {
     id: ID

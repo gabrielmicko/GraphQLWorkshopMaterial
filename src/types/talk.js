@@ -1,3 +1,7 @@
+/**
+ * Talk type defining the parameters
+ */
+
 const Talk = /* GraphQL */ `
   type Talk {
     id: ID!,

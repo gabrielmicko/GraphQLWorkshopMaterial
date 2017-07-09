@@ -6,6 +6,9 @@ import {
   saveSpeaker
 } from '../model/file';
 
+/*
+ * Resolvers containing Queries and it's options, Mutation
+ */
 export default {
   // Speaker: {
   //   talks: ({ id }) => {
