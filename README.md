@@ -1,3 +1,12 @@
+Task 5:
+
+Dokumentalni erosen a rethink/helper.js-t
+Megirni a DB.js-t
+Majd hozzáadni a resolvert
+
+
+
+
 Task 1:
 
 Create a model (src/model/file.js) which can work with JSON files. The model has 3 functions.
