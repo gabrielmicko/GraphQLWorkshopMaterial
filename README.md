@@ -1,7 +1,7 @@
 ## GraphQL Workshop
 
 ### Task 2
-ow you are going to create your first minimalistic GraphQL server. The goal of this task is to be able to query for speakers and talks.
+Now you are going to create your first minimalistic GraphQL server. The goal of this task is to be able to query for speakers and talks.
 
 - The first subtask would be to setup express to use graphqlHTTP. File is here "src/server.js". Please take a look how it is done on it's GitHub site https://github.com/graphql/express-graphql. Use the APP_PATH constant when defining the route.
 - It is time to write your first schemas. You will need two of them. First is for speakers, second is for talks. You can access these files in the "src/types" directory ("speaker.js", "talk.js"). Check "src/db/speakers.json" and "src/db/talks.json" to see the structure of the data. Visit http://dev.apollodata.com/tools/graphql-tools/generate-schema.html for more information about schemas (ie: "Author").
