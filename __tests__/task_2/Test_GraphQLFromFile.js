@@ -24,7 +24,7 @@ test('GraphQL server should return all the speakers.', () => {
   expect.assertions(1);
   const query = /* GraphQL */ `
     {
-      talks {
+      speakers {
         id,
         bio,
         facebook,
