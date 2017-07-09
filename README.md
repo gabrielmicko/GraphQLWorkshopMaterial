@@ -17,6 +17,7 @@ In this task you will need to extend the speakers query. When you run the follow
 #### Hints:
 - Use the graphql-tools website for getting more help.
 - Your resolver for the Speakers will have a object attribute containing the speaker.
+- Pay attention that some speakers don't have any talks.
 
 #### Running the GraphQL server:
 ```bash

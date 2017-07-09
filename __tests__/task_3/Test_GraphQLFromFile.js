@@ -6,7 +6,14 @@ test('GraphQL server should return all the speakers with talks.', () => {
   const query = /* GraphQL */ `
     {
       speakers {
-        talks
+        talks {
+          id,
+          speaker_id,
+          lang,
+          name,
+          theme,
+          title
+        }
       }
     }
   `;
