@@ -1,6 +1,3 @@
-import speakers from '../db/speakers.json';
-import talks from '../db/talks.json';
-
 /**
  * Returns all the talks
  * @returns {Array} Array containing the talks talks
