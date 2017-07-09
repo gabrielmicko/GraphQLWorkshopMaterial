@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphQL server should return one speaker by ID. 1`] = `
+Object {
+  "data": Object {
+    "speakers": Array [
+      Object {
+        "bio": "He is enthusiastic front-end developer who loves the web and new technologies around it. He is tech speaker, contributor, volunteer at Mozilla. He believes in the mission to ensure the Internet is a global public resource, open and accessible to all.",
+        "facebook": "https://facebook.com/gabriel.micko",
+        "github": "",
+        "id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+        "linkedin": "",
+        "name": "Gabriel Mičko",
+        "photo": "http://fsa.jsday.com.br/img/people/gabriel_micko.jpg",
+        "position": "Mozilla",
+        "talks": Array [
+          Object {
+            "id": "47c39051-0fba-4f24-a06b-0f4af92e670c",
+            "lang": "en",
+            "name": "Gabriel Mičko",
+            "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+            "theme": "The presentation covers an introduction to the GraphQL query language, explaining its features and benefits. I will show how minimal investment you have to do to start up your GraphQL endpoint without having to rewrite your entire database infrastructure. The workshop includes live demonstration (live coding).",
+            "title": "GraphQL beyond the limit",
+          },
+          Object {
+            "id": "6a5a8b27-121c-4dc1-96dd-3df5f065158b",
+            "lang": "en",
+            "name": "Gabriel Mičko",
+            "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+            "theme": "The presentation covers the main pillars of WebRTC which is video - audio calling and file sharing. It includes a well prepared demo with interaction with the audience, top-notch news and help to get started.",
+            "title": "WebRTC From Zero to Hero",
+          },
+        ],
+        "twitter": "https://twitter.com/gabriel_micko",
+      },
+    ],
+  },
+}
+`;
+
+exports[`GraphQL server should return one speaker by name. 1`] = `
+Object {
+  "data": Object {
+    "speakers": Array [
+      Object {
+        "bio": "He is enthusiastic front-end developer who loves the web and new technologies around it. He is tech speaker, contributor, volunteer at Mozilla. He believes in the mission to ensure the Internet is a global public resource, open and accessible to all.",
+        "facebook": "https://facebook.com/gabriel.micko",
+        "github": "",
+        "id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+        "linkedin": "",
+        "name": "Gabriel Mičko",
+        "photo": "http://fsa.jsday.com.br/img/people/gabriel_micko.jpg",
+        "position": "Mozilla",
+        "talks": Array [
+          Object {
+            "id": "47c39051-0fba-4f24-a06b-0f4af92e670c",
+            "lang": "en",
+            "name": "Gabriel Mičko",
+            "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+            "theme": "The presentation covers an introduction to the GraphQL query language, explaining its features and benefits. I will show how minimal investment you have to do to start up your GraphQL endpoint without having to rewrite your entire database infrastructure. The workshop includes live demonstration (live coding).",
+            "title": "GraphQL beyond the limit",
+          },
+          Object {
+            "id": "6a5a8b27-121c-4dc1-96dd-3df5f065158b",
+            "lang": "en",
+            "name": "Gabriel Mičko",
+            "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+            "theme": "The presentation covers the main pillars of WebRTC which is video - audio calling and file sharing. It includes a well prepared demo with interaction with the audience, top-notch news and help to get started.",
+            "title": "WebRTC From Zero to Hero",
+          },
+        ],
+        "twitter": "https://twitter.com/gabriel_micko",
+      },
+    ],
+  },
+}
+`;

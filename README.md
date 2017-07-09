@@ -1,23 +1,29 @@
 ## GraphQL Workshop
 
-### Task 3
-In this task you will need to extend the speakers query. When you run the following query it should also query for the talks for each speaker.
+### Task 4
+You are almost there, you've done great so far. What you have to do is the following. It is reasonable expectation to have parameters in any query. When you run speakers query you must be able to search for a specific speaker by a name or an id. Here is an example:
 
-```javascript
+```bash
 {
-  speakers {
-    talks
+  speakers(name: "Gabriel Mičko") {
+    position
+  }
+}
+```
+or
+```bash
+{
+  speakers(id: "cfc5f8de-b034-4c61-b885-1db70d319e1c") {
+    position
   }
 }
 ```
 
-- You will need to manipulate around "src/types/speakers.js". Make sure to check http://dev.apollodata.com/tools/graphql-tools/generate-schema.html (Author's posts).
-- Check your resolver file "src/resolvers/index.js". Add the specific talks resolver for Speakers type. You can use the getTalksBySpeakerId you wrote as a part of the first task. It will help you to find the talks for the specific speaker.
+- You will need to define the parameters in the Query type (src/types/index.js).
+- Make sure to pass the arguments in "src/resolvers/index.js";
 
 #### Hints:
-- Use the graphql-tools website for getting more help.
-- Your resolver for the Speakers will have a object attribute containing the speaker.
-- Pay attention that some speakers don't have any talks.
+- You cool without that. 🆒
 
 #### Running the GraphQL server:
 ```bash
