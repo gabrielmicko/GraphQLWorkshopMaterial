@@ -6,9 +6,9 @@ const getTalks = () => {};
 
 /**
  * Returns all the speakers according to the arguments
- * If there are no arguments the function returns all
- * of the speakers. Only one argument is going to be passed
- * at a time.
+ * If there are no arguments or the argument is an empty object
+ * the function returns all of the speakers.
+ * Only one argument is going to be passed at a time.
  * @param  {String} args.id id of a speaker OR
  * @param  {String} args.name name of a speaker
  * @return {Array} Returns the filtered ot all of the speakers
