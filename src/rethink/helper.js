@@ -72,29 +72,6 @@ const insertData = (conn, dbName, tableName, dataArray) => {
 };
 
 /**
- * Deletes all the content from tables.
- * Iterates over the tables and creates delete promises which are being collected.
- * Returns one promise which is fullyfied when all of the deletes are successful.
- * @param  {Object} conn Database connection
- * @param  {String} dbName Database name
- * @param  {Array} tables Array containing tables (strings), which you want to wipe (ie: ["speakers", "talks"])
- * @return {Promise} Promise which resolves when deletes are done.
- */
-const wipeTables = (conn, dbName, tables) => {
-  let deletePromises = [];
-  tables.forEach(table => {
-    let delPromise = new Promise(resolve => {
-      r.db(dbName).table(table).delete().run(conn, (conn, err) => {
-        err ? resolve(err) : resolve();
-      });
-    });
-
-    deletePromises.push(delPromise);
-  });
-  return Promise.all(deletePromises);
-};
-
-/**
  * Get all data from a table according to a filter object.
  * @param  {Object} conn Database connection
  * @param  {String} dbName Database name
@@ -123,6 +100,29 @@ const getAll = (conn, dbName, tableName) => {
       !err ? resolve(result.toArray()) : reject(err);
     });
   });
+};
+
+/**
+ * Deletes all the content from tables.
+ * Iterates over the tables and creates delete promises which are being collected.
+ * Returns one promise which is fullyfied when all of the deletes are successful.
+ * @param  {Object} conn Database connection
+ * @param  {String} dbName Database name
+ * @param  {Array} tables Array containing tables (strings), which you want to wipe (ie: ["speakers", "talks"])
+ * @return {Promise} Promise which resolves when deletes are done.
+ */
+const wipeTables = (conn, dbName, tables) => {
+  let deletePromises = [];
+  tables.forEach(table => {
+    let delPromise = new Promise(resolve => {
+      r.db(dbName).table(table).delete().run(conn, (conn, err) => {
+        err ? resolve(err) : resolve();
+      });
+    });
+
+    deletePromises.push(delPromise);
+  });
+  return Promise.all(deletePromises);
 };
 
 export {
