@@ -2,7 +2,7 @@
 
 ### Task 5
 
-#### Install RethinkDB 🔍
+#### Install & Run RethinkDB 🔍
 ```bash
 open https://www.rethinkdb.com/docs/install/
 ```
@@ -38,7 +38,7 @@ Or if you want to run the test on every change run this command:
 yarn run test:watch
 ```
 
-#### If tests are OK, you can start Seeding:
+#### Seed:
 ```bash
 yarn run seed
 ```
