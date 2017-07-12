@@ -12,6 +12,17 @@ const deleteJohnDoe = conn => {
     .run(conn);
 };
 
+beforeAll(() => {
+  return new Promise(resolve => {
+    connectToDB().then(conn => {
+      deleteJohnDoe(conn).then(() => {
+        conn.close();
+        resolve();
+      });
+    });
+  });
+});
+
 afterAll(() => {
   return new Promise(resolve => {
     connectToDB().then(conn => {

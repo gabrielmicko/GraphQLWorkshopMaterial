@@ -10,6 +10,9 @@ const Query = /* GraphQL */ `
   }
 `;
 
+/**
+ * Mutations
+ */
 const Mutation = /* GraphQL */ `
   type Mutation {
     addSpeaker(
