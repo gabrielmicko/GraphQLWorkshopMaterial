@@ -43,7 +43,16 @@ const getTalks = () => {
  * @param  {String} args.name name of a speaker
  * @return {Promise<Array>} Promise resolving an Array containing the speakers
  */
-const getSpeakers = filter => {};
+const getSpeakers = filter => {
+  return new Promise(resolve => {
+    getConnection().then(connection => {
+      if (filter) {
+        resolve(getByFilters(connection, 'jsdays', 'speakers', filter));
+      }
+      resolve(getAll(connection, 'jsdays', 'speakers'));
+    });
+  });
+};
 
 /**
  * Returns with a new Promise
@@ -53,7 +62,15 @@ const getSpeakers = filter => {};
  * @return {Promise<Array>} Promis resolving an Array containing all of the talks where the
  * speaker_id's value matches the given argument.
  */
-const getTalksBySpeakerId = speakerId => {};
+const getTalksBySpeakerId = speakerId => {
+  return new Promise(resolve => {
+    getConnection().then(connection => {
+      resolve(
+        getByFilters(connection, 'jsdays', 'talks', { speaker_id: speakerId })
+      );
+    });
+  });
+};
 
 /**
  * Returns with a new Promise
@@ -64,6 +81,17 @@ const getTalksBySpeakerId = speakerId => {};
  * it provides stats about your query. Since it passes only one object in an array to insertData,
  * It has to resolve the first result from the array.
  */
-const saveSpeaker = speakerData => {};
+const saveSpeaker = speakerData => {
+  return new Promise(resolve => {
+    getConnection().then(connection => {
+      let insertPromise = insertData(connection, 'jsdays', 'speakers', [
+        speakerData
+      ]);
+      insertPromise.then(result => {
+        resolve(result[0]);
+      });
+    });
+  });
+};
 
 export { getTalks, getSpeakers, getTalksBySpeakerId, saveSpeaker };
