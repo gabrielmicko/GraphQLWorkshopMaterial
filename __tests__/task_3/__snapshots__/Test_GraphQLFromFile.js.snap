@@ -40,20 +40,20 @@ Object {
       Object {
         "talks": Array [
           Object {
-            "id": "47c39051-0fba-4f24-a06b-0f4af92e670c",
-            "lang": "en",
-            "name": "Gabriel Mičko",
-            "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
-            "theme": "The presentation covers an introduction to the GraphQL query language, explaining its features and benefits. I will show how minimal investment you have to do to start up your GraphQL endpoint without having to rewrite your entire database infrastructure. The workshop includes live demonstration (live coding).",
-            "title": "GraphQL beyond the limit",
-          },
-          Object {
             "id": "6a5a8b27-121c-4dc1-96dd-3df5f065158b",
             "lang": "en",
             "name": "Gabriel Mičko",
             "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
             "theme": "The presentation covers the main pillars of WebRTC which is video - audio calling and file sharing. It includes a well prepared demo with interaction with the audience, top-notch news and help to get started.",
             "title": "WebRTC From Zero to Hero",
+          },
+          Object {
+            "id": "47c39051-0fba-4f24-a06b-0f4af92e670c",
+            "lang": "en",
+            "name": "Gabriel Mičko",
+            "speaker_id": "cfc5f8de-b034-4c61-b885-1db70d319e1c",
+            "theme": "The presentation covers an introduction to the GraphQL query language, explaining its features and benefits. I will show how minimal investment you have to do to start up your GraphQL endpoint without having to rewrite your entire database infrastructure. The workshop includes live demonstration (live coding).",
+            "title": "GraphQL beyond the limit",
           },
         ],
       },
@@ -138,20 +138,20 @@ Object {
       Object {
         "talks": Array [
           Object {
-            "id": "396a0cb5-83d3-485d-a180-8279efd2fe8b",
-            "lang": "pt-BR",
-            "name": "Romualdo André",
-            "speaker_id": "f8945307-089a-476f-9a45-2048361d55b5",
-            "theme": "O Curso Básico de JavaScript ajudará os alunos com os seus primeiros passos na linguagem mais utilizada do mundo. Será um momento de muito aprendizado e muita \\"mão na massa\\". Com esse curso, os participantes estarão aptos a trabalhar com desenvolvimento de aplicações web e manipulação do DOM com JavaScript. Teremos duas turmas, uma pela manhã e outra pela tarde.",
-            "title": "Workshop: Iniciando com JavaScript (Turma 01)",
-          },
-          Object {
             "id": "aa3b7f51-e00e-4cb6-ad62-6e9bce963d5b",
             "lang": "pt-BR",
             "name": "Romualdo André",
             "speaker_id": "f8945307-089a-476f-9a45-2048361d55b5",
             "theme": "O Curso Básico de JavaScript ajudará os alunos com os seus primeiros passos na linguagem mais utilizada do mundo. Será um momento de muito aprendizado e muita \\"mão na massa\\". Com esse curso, os participantes estarão aptos a trabalhar com desenvolvimento de aplicações web e manipulação do DOM com JavaScript. Teremos duas turmas, uma pela manhã e outra pela tarde.",
             "title": "Workshop: Iniciando com JavaScript (Turma 02)",
+          },
+          Object {
+            "id": "396a0cb5-83d3-485d-a180-8279efd2fe8b",
+            "lang": "pt-BR",
+            "name": "Romualdo André",
+            "speaker_id": "f8945307-089a-476f-9a45-2048361d55b5",
+            "theme": "O Curso Básico de JavaScript ajudará os alunos com os seus primeiros passos na linguagem mais utilizada do mundo. Será um momento de muito aprendizado e muita \\"mão na massa\\". Com esse curso, os participantes estarão aptos a trabalhar com desenvolvimento de aplicações web e manipulação do DOM com JavaScript. Teremos duas turmas, uma pela manhã e outra pela tarde.",
+            "title": "Workshop: Iniciando com JavaScript (Turma 01)",
           },
         ],
       },

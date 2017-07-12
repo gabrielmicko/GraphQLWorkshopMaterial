@@ -1,29 +1,22 @@
 ## GraphQL Workshop
 
-### Task 5
+### Task 6
 
-#### Install & Run RethinkDB 🔍
-```bash
-open https://www.rethinkdb.com/docs/install/
-```
+You are AMAZING 😱. Let's put it together now. As we did in the first task, we need to write a model. We are not going to use the old file model anymore, but we are going to keep the same structure and functions. Open "src/model/db.js". You'll see, no magic there 🎩.
+Your task is to write the logic for the functions by using the "src/model/helper.js". Some details you might already know. Database name is jsdays. The two tables are speakers and talks. When you are ready the final step is to replace the path for your model in "src/resolvers/index.js".
+If you have done everything right and the tests are passing you should run the GraphQL server and check your results manually.
 
-All righty! 🚀 RethinkDB is a cool database. The new approach now is to replace the .json files with an existing database. This will be the first step on this journey. Your task will be to create a helper file which will handle the database connection, insert, delete, get etc. The path for it is here "src/rethink/helper.js". Please do it according to the given documentation. Feel free to surf the documentation waves: https://rethinkdb.com/api/javascript/ 🔍.
-
-#### Your config will probably look like
-The port for the GraphQL UI is: http://localhost:8080.
-```javascript
-{
-  host: 'localhost',
-  port: 28015,
-  user: 'admin'
-}
-```
 
 #### Hints:
-- This task is a bit tricky. Feel free to ask. 🙋
-- Use the tests to test your functions.
-- Once your functions are passing the tests you can ran the seed command. It will create the tables for you. It also pushes all the necessary data to the tables, so you don't have to do it manually (speakers, talks).
+- Make sure to seed at least once, before running the tests.
+- Before you test, make sure to change the path of the resolver to use the new model.
+- Don't forget that you need to provide a live connection to the model, always. Use getConnection() (ie: getTalks function).
 
+
+#### Running the GraphQL server:
+```bash
+yarn run graphql
+```
 
 #### Testing:
 When you are done, please run this command:
