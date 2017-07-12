@@ -37,6 +37,7 @@ The next step is to create the mutation type addSpekers with all the necessary a
 
 #### Hints:
 - RethinkDB insert will return generated_keys Array, which contains the newly added ID, it also has an inserted key which contains the number of the inserted data.
+- Use the graphql-tools documentation.
 
 
 #### Running the GraphQL server:

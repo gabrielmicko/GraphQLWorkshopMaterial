@@ -10,20 +10,10 @@ const Query = /* GraphQL */ `
   }
 `;
 
+/**
+ * Mutations
+ */
 const Mutation = /* GraphQL */ `
-  type Mutation {
-    addSpeaker(
-      name: String!
-      bio: String!
-      facebook: String
-      github: String
-      linkedin: String
-      twitter: String
-      position: String!
-      name: String!
-      photo: String!
-    ) : Speaker
-  }
 `;
 
 /**
