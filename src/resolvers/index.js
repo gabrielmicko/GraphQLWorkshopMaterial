@@ -1,4 +1,4 @@
-import { getTalks, getSpeakers, getTalksBySpeakerId } from '../model/db';
+import { getTalks, getSpeakers, getTalksBySpeakerId } from '../model/file';
 
 /* 
  * Resolvers containing Queries and it's options, Mutation
