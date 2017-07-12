@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphQL Mutation addSpeaker. 1`] = `
+Object {
+  "data": Object {
+    "addSpeaker": Object {
+      "bio": "John Doe is a test user.",
+      "facebook": "fb.com/john.doe",
+      "github": "github.com/john.doe",
+      "linkedin": "linkedin.com/john.doe",
+      "name": "John Doe",
+      "photo": "/john.doe.png",
+      "position": "Beeing a test everywhere.",
+      "twitter": "github.com/john.doe",
+    },
+  },
+}
+`;

@@ -1,16 +1,42 @@
 ## GraphQL Workshop
 
-### Task 6
+### Task 7
 
-You are AMAZING 😱. Let's put it together now. As we did in the first task, we need to write a model. We are not going to use the old file model anymore, but we are going to keep the same structure and functions. Open "src/model/db.js". You'll see, no magic there 🎩.
-Your task is to write the logic for the functions by using the "src/model/helper.js". Some details you might already know. Database name is jsdays. The two tables are speakers and talks. When you are ready the final step is to replace the path for your model in "src/resolvers/index.js".
-If you have done everything right and the tests are passing you should run the GraphQL server and check your results manually.
+Let's write your first mutation. Whenever you want to insert, update or delete from / to your database, you are suggested to write a mutation.
+Say you want to write an addSpeaker mutation.
+
+Here is how a mutation call would look like:
+```javascript
+mutation addSpeaker {
+  addSpeaker(
+    name: "John Doe",
+    bio: "John Doe is a test user.",
+    facebook: "fb.com/john.doe",
+    github: "github.com/john.doe",
+    twitter: "github.com/john.doe",
+    linkedin: "linkedin.com/john.doe",
+    position: "Beeing a test everywhere.",
+    photo: "/john.doe.png") {
+      name,
+      bio,
+      facebook,
+      github,
+      twitter,
+      linkedin,
+      position,
+      photo
+    }
+}
+```
+
+As you see you have to pass arguments which represents the data you want to insert. Besides that you have to define what do you want to receive back as a response. In this example I would like to get back the inserted speakers data.
+
+The first thing you have to do is open "src/resolvers/index.js". Add the Mutation object with an addSpeaker key which is a function. This will be your resolver for mutation call. Use previously written function saveSpeakers from the model "src/model/db.js".
+The next step is to create the mutation type addSpekers with all the necessary arguments.
 
 
 #### Hints:
-- Make sure to seed at least once, before running the tests.
-- Before you test, make sure to change the path of the resolver to use the new model.
-- Don't forget that you need to provide a live connection to the model, always. Use getConnection() (ie: getTalks function).
+- RethinkDB insert will return generated_keys Array, which contains the newly added ID, it also has an inserted key which contains the number of the inserted data.
 
 
 #### Running the GraphQL server:
