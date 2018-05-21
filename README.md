@@ -38,7 +38,7 @@ subscription newSpeaker {
       }
     }
   }
-```javascript
+```
 
 You will see a text like this: "Your subscription data will appear here after server publication!".
 Now open up another graphiql tab and run the mutation of addSpeaker.
