@@ -1,4 +1,5 @@
 import r from 'rethinkdb';
+import { RETHINK } from '../config/config.json';
 
 /**
  * Creates a connection with the database.
@@ -7,9 +8,9 @@ import r from 'rethinkdb';
  */
 const connectToDB = () => {
   return r.connect({
-    host: 'localhost',
-    port: 28015,
-    user: 'admin'
+    host: RETHINK.HOST,
+    port: RETHINK.PORT,
+    user: RETHINK.USER
   });
 };
 
@@ -36,9 +37,12 @@ const createDatabase = (conn, dbName) => {
  */
 const createTable = (conn, dbName, tableName) => {
   return new Promise(resolve => {
-    r.db(dbName).tableCreate(tableName).run(conn, err => {
-      err ? resolve(err) : resolve();
-    });
+    r
+      .db(dbName)
+      .tableCreate(tableName)
+      .run(conn, err => {
+        err ? resolve(err) : resolve();
+      });
   });
 };
 
@@ -57,13 +61,17 @@ const insertData = (conn, dbName, tableName, dataArray) => {
   if (dataArray && Array.isArray(dataArray)) {
     dataArray.forEach(data => {
       let insertPromise = new Promise((resolve, reject) => {
-        r.db(dbName).table(tableName).insert(data).run(conn, (err, result) => {
-          if (!err && result.inserted === 1) {
-            resolve(result);
-          } else {
-            reject(err);
-          }
-        });
+        r
+          .db(dbName)
+          .table(tableName)
+          .insert(data)
+          .run(conn, (err, result) => {
+            if (!err && result.inserted === 1) {
+              resolve(result);
+            } else {
+              reject(err);
+            }
+          });
       });
       insertPromisesArray.push(insertPromise);
     });
@@ -81,9 +89,13 @@ const insertData = (conn, dbName, tableName, dataArray) => {
  */
 const getByFilters = (conn, dbName, tableName, filters) => {
   return new Promise((resolve, reject) => {
-    r.db(dbName).table(tableName).filter(filters).run(conn, (err, result) => {
-      !err ? resolve(result.toArray()) : reject(err);
-    });
+    r
+      .db(dbName)
+      .table(tableName)
+      .filter(filters)
+      .run(conn, (err, result) => {
+        !err ? resolve(result.toArray()) : reject(err);
+      });
   });
 };
 
@@ -96,9 +108,12 @@ const getByFilters = (conn, dbName, tableName, filters) => {
  */
 const getAll = (conn, dbName, tableName) => {
   return new Promise((resolve, reject) => {
-    r.db(dbName).table(tableName).run(conn, (err, result) => {
-      !err ? resolve(result.toArray()) : reject(err);
-    });
+    r
+      .db(dbName)
+      .table(tableName)
+      .run(conn, (err, result) => {
+        !err ? resolve(result.toArray()) : reject(err);
+      });
   });
 };
 
@@ -115,9 +130,13 @@ const wipeTables = (conn, dbName, tables) => {
   let deletePromises = [];
   tables.forEach(table => {
     let delPromise = new Promise(resolve => {
-      r.db(dbName).table(table).delete().run(conn, (conn, err) => {
-        err ? resolve(err) : resolve();
-      });
+      r
+        .db(dbName)
+        .table(table)
+        .delete()
+        .run(conn, (conn, err) => {
+          err ? resolve(err) : resolve();
+        });
     });
 
     deletePromises.push(delPromise);
@@ -125,12 +144,34 @@ const wipeTables = (conn, dbName, tables) => {
   return Promise.all(deletePromises);
 };
 
-export {
-  connectToDB,
-  createDatabase,
-  createTable,
-  insertData,
-  wipeTables,
-  getAll,
-  getByFilters
+/**
+ * Subscribe to any change that happens in a table.
+ * Takes the callback function and calls it whenever something has changed.
+ * The callback function in most of the cases should notify the PubSub system.
+ * Returns one promise which is fullyfied when the subscription has been successful.
+ * @param  {Object} conn Database connection
+ * @param  {String} dbName Database name
+ * @param  {Array} tableName Table name that you want to subscribe to.
+ * @return {Promise} Promise which resolves when subscription is ready.
+ */
+const subscribeToTable = (conn, dbName, tableName, callbackFn) => {
+  return new Promise(resolve => {
+    r
+      .db(dbName)
+      .table(tableName)
+      .changes()
+      .run(conn, function(error, cursor) {
+        if (error !== null) {
+          reject(error);
+        }
+        cursor.each((e, c) => {
+          if (c.new_val) {
+            callbackFn(c.new_val);
+          }
+        });
+        resolve();
+      });
+  });
 };
+
+export { connectToDB, createDatabase, createTable, insertData, wipeTables, getAll, getByFilters, subscribeToTable };

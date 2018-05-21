@@ -1,9 +1,4 @@
-import {
-  getAll,
-  getByFilters,
-  connectToDB,
-  insertData
-} from '../rethink/helper';
+import { getAll, getByFilters, connectToDB, insertData, subscribeToTable } from '../rethink/helper';
 
 /**
  * Initiating a connection with the database
@@ -65,9 +60,7 @@ const getSpeakers = filter => {
 const getTalksBySpeakerId = speakerId => {
   return new Promise(resolve => {
     getConnection().then(connection => {
-      resolve(
-        getByFilters(connection, 'jsdays', 'talks', { speaker_id: speakerId })
-      );
+      resolve(getByFilters(connection, 'jsdays', 'talks', { speaker_id: speakerId }));
     });
   });
 };
@@ -84,9 +77,7 @@ const getTalksBySpeakerId = speakerId => {
 const saveSpeaker = speakerData => {
   return new Promise(resolve => {
     getConnection().then(connection => {
-      let insertPromise = insertData(connection, 'jsdays', 'speakers', [
-        speakerData
-      ]);
+      let insertPromise = insertData(connection, 'jsdays', 'speakers', [speakerData]);
       insertPromise.then(result => {
         resolve(result[0]);
       });
@@ -94,4 +85,28 @@ const saveSpeaker = speakerData => {
   });
 };
 
-export { getTalks, getSpeakers, getTalksBySpeakerId, saveSpeaker };
+/**
+ * Returns a new Promise.
+ * Gets the connection then,
+ * resolves when it subscribes to speakers table changes.
+ * @param  {Function} callbackFunction whenever something changes this will be called,
+ * argument of this function will contain the changes in the database.
+ * @return {Promise<Array>} Promise resolves when subscription was successful. Rejected when error happened.
+ */
+const subscribeToSpeakersChanges = callbackFunction => {
+  return new Promise((resolve, reject) => {
+    getConnection().then(connection => {
+      let subscribePromise = subscribeToTable(connection, 'jsdays', 'speakers', speaker => {
+        getTalksBySpeakerId(speaker.id).then(talks => {
+          speaker.talks = talks;
+          callbackFunction(speaker);
+        });
+      });
+      subscribePromise.then(result => {
+        resolve();
+      }, reject);
+    });
+  });
+};
+
+export { getTalks, getSpeakers, getTalksBySpeakerId, saveSpeaker, subscribeToSpeakersChanges };

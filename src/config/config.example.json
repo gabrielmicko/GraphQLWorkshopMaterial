@@ -1,0 +1,11 @@
+{
+    "RETHINK": {
+        "HOST": "localhost",
+        "PORT": 32769,
+        "USER": "admin",
+        "PASSWORD": ""
+    },
+    "SERVER": {
+        "PORT": 3000
+    }
+}

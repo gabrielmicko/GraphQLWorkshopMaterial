@@ -1,9 +1,13 @@
-import {
-  getTalks,
-  getSpeakers,
-  getTalksBySpeakerId,
-  saveSpeaker
-} from '../model/db';
+import { pubsub } from '../subscriptions/pubsub';
+import { getTalks, getSpeakers, getTalksBySpeakerId, saveSpeaker, subscribeToSpeakersChanges } from '../model/db';
+
+let speakerChangesPromise = subscribeToSpeakersChanges(function(result) {
+  pubsub.publish('NEW_SPEAKER', { newSpeaker: result });
+});
+
+speakerChangesPromise.catch(error => {
+  console.error(('Could not subscribe to speaker changes, reason: ', error));
+});
 
 /* 
  * Resolvers containing Queries and it's options, Mutation
@@ -32,5 +36,11 @@ export default {
   Query: {
     talks: (_, args) => getTalks(),
     speakers: (_, args) => getSpeakers(args)
+  },
+
+  Subscription: {
+    newSpeaker: {
+      subscribe: () => pubsub.asyncIterator('NEW_SPEAKER')
+    }
   }
 };

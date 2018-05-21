@@ -1,11 +1,49 @@
 ## GraphQL Workshop
 
-### Task 7
+### Experiment 8
 
-Let's write your first mutation. Whenever you want to insert, update or delete from / to your database, you are suggested to write a mutation.
-Say you want to write an addSpeaker mutation.
+This is experiment for showcasing GraphQL subscriptions. You will need to configure your server first. 
+Once it is done run the server and open up graphiql.
 
-Here is how a mutation call would look like:
+#### Setup config, install dependencies & run the server
+```bash
+cp ./src/config/config.example.json ./src/config/config.json 
+```
+
+```bash
+yarn install
+yarn run graphql
+open localhost:3000/graphiql
+```
+
+#### Copy the subscription call into graphiql
+
+```javascript
+subscription newSpeaker {
+    newSpeaker {
+      id,
+      bio,
+      name,
+      linkedin,
+      name,
+      bio,
+      facebook,
+      github,
+      twitter,
+      linkedin,
+      position,
+      photo,
+      talks {
+        id
+      }
+    }
+  }
+```javascript
+
+You will see a text like this: "Your subscription data will appear here after server publication!".
+Now open up another graphiql tab and run the mutation of addSpeaker.
+
+#### Here is the mutation:
 ```javascript
 mutation addSpeaker {
   addSpeaker(
@@ -28,16 +66,12 @@ mutation addSpeaker {
     }
 }
 ```
-
-As you see you have to pass arguments which represents the data you want to insert. Besides that you have to define what do you want to receive back as a response. In this example I would like to get back the inserted speakers data.
-
-The first thing you have to do is open "src/resolvers/index.js". Add the Mutation object with an addSpeaker key which is a function. This will be your resolver for mutation call. Use previously written function saveSpeakers from the model "src/model/db.js".
-The next step is to create the mutation type addSpekers with all the necessary arguments.
-
+If you done everything correctly on the first tab, where you subscription is, the new speaker should show up. Hurray!
 
 #### Hints:
-- RethinkDB insert will return generated_keys Array, which contains the newly added ID, it also has an inserted key which contains the number of the inserted data.
-- Use the graphql-tools documentation.
+- You will need to install the new dependencies.
+- This will require several apollo packages like "apollo-server-express" & "subscriptions-transport-ws".
+- Feel free to open issue if you find something wrong in the implementation.
 
 
 #### Running the GraphQL server:

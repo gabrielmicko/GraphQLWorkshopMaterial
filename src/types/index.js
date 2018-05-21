@@ -1,5 +1,6 @@
 import Speaker from './speaker';
 import Talk from './talk';
+
 /**
  * Query type which holds the queryies which could be called.
  */
@@ -30,13 +31,23 @@ const Mutation = /* GraphQL */ `
 `;
 
 /**
+ * Subscriptions
+ */
+const Subscription = /* GraphQL */ `
+  type Subscription {
+    newSpeaker: Speaker
+  }
+`;
+
+/**
  * A schema containing Query and Mutation types
  */
 const Schema = /* GraphQL */ `
   schema {
     query: Query
     mutation: Mutation
+    subscription: Subscription
   }
 `;
 
-export default [Schema, Query, Mutation, Speaker, Talk];
+export default [Schema, Query, Mutation, Subscription, Speaker, Talk];
